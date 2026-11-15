@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="a">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>yoyo 李宇宥 Portfolio</title>
+<meta name="description" content="yoyo 李宇宥的作品集：活動企劃、社群內容、平面設計與互動網頁。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter+Tight:wght@500;700;800&family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- 四種風格（全部實色，沒有透明或模糊） ---------- */
+:root,[data-theme="a"]{ /* A Editorial 時尚雜誌 */
+  --bg:#F5F3EC;--soft:#EAE6DA;--card:#FFFFFF;--line:#D8D2C4;--ink:#252725;--mute:#6E6C64;
+  --main:#B94B43;--main-ink:#fff;--second:#66765D;--third:#AEBBCB;--dark:#252725;--dark-ink:#F5F3EC;
+  --disp:"Instrument Serif","Noto Serif TC",serif;--disp-w:400;--disp-ls:-.01em;--disp-tt:none;
+  --lab:"Inter Tight","Noto Sans TC",sans-serif;--lab-ls:.16em;--r:6px;--blend:multiply;
+}
+[data-theme="b"]{ /* B Summer Archive 復古底片 */
+  --bg:#F3EBD3;--soft:#E7DDBE;--card:#FFFDF4;--line:#D3C7A2;--ink:#33392E;--mute:#6F715F;
+  --main:#66765D;--main-ink:#fff;--second:#B94B43;--third:#E2B94B;--dark:#4A5743;--dark-ink:#F3EBD3;
+  --disp:"Instrument Serif","Noto Serif TC",serif;--disp-w:400;--disp-ls:-.01em;--disp-tt:none;
+  --lab:"Caveat","Noto Sans TC",cursive;--lab-ls:.02em;--r:3px;--blend:multiply;
+}
+[data-theme="c"]{ /* C Blue Hour 歐美街頭 */
+  --bg:#F2F4F7;--soft:#E1E6EE;--card:#FFFFFF;--line:#C5CDDA;--ink:#0C0C0E;--mute:#535A66;
+  --main:#1F3FD1;--main-ink:#fff;--second:#0C0C0E;--third:#7193C8;--dark:#1F3FD1;--dark-ink:#fff;
+  --disp:"Inter Tight","Noto Sans TC",sans-serif;--disp-w:800;--disp-ls:-.04em;--disp-tt:uppercase;
+  --lab:"Inter Tight","Noto Sans TC",sans-serif;--lab-ls:.16em;--r:0px;--blend:multiply;
+}
+[data-theme="d"]{ /* D Cinema Diary 電影敘事 */
+  --bg:#26292B;--soft:#30353A;--card:#353A40;--line:#4A5058;--ink:#ECE8DD;--mute:#A9ADB0;
+  --main:#C9272B;--main-ink:#fff;--second:#AEBBCB;--third:#AEBBCB;--dark:#17191A;--dark-ink:#ECE8DD;
+  --disp:"Instrument Serif","Noto Serif TC",serif;--disp-w:400;--disp-ls:0;--disp-tt:none;
+  --lab:"Inter Tight","Noto Sans TC",sans-serif;--lab-ls:.3em;--r:2px;--blend:normal;
+}
+
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.7 "Noto Sans TC",system-ui,sans-serif;overflow-x:hidden;transition:background .4s,color .4s}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:76px 0}
+.label{font:500 13px/1 var(--lab);letter-spacing:var(--lab-ls);text-transform:uppercase;color:var(--main);display:block;margin-bottom:12px}
+[data-theme="b"] .label{font-size:22px;text-transform:none}
+h1,h2{font-family:var(--disp);font-weight:var(--disp-w);letter-spacing:var(--disp-ls);line-height:1;text-transform:var(--disp-tt)}
+h2{font-size:clamp(38px,7.5vw,64px);margin-bottom:10px}
+h2 em{font-style:italic;color:var(--main)}
+[data-theme="c"] h2 em{font-style:normal}
+h3{font-size:18px;line-height:1.4;font-weight:700}
+.lead{color:var(--mute);margin-bottom:30px}
+.alt{background:var(--soft);transition:background .4s}
+
+/* 最上方浮動選單（實色） */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;background:#fff;border-radius:99px;padding:7px;display:flex;gap:2px;box-shadow:0 10px 30px rgba(20,20,20,.16);max-width:calc(100vw - 20px)}
+.nav a{text-decoration:none;color:#161F3A;font-weight:700;font-size:17px;padding:11px 22px;border-radius:99px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover{background:#EEF0F4}
+.nav a.on{background:#161F3A;color:#fff}
+.nav a.cta{background:#D9483B;color:#fff}
+@media(max-width:640px){.nav a{font-size:14px;padding:9px 11px}.nav .opt{display:none}}
+
+/* hero：左邊名字、中間人像、筆電上的按鈕 */
+.hero{position:relative;padding:110px 0 0;overflow:hidden}
+.hero .wrap{display:grid;position:relative}
+.hero .txt{position:relative;z-index:3}
+.hero h1{font-size:clamp(84px,24vw,230px);line-height:.82}
+.hero h1 small{display:block;font:500 15px/1 var(--lab);letter-spacing:var(--lab-ls);text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+[data-theme="b"] .hero h1 small{font-size:24px;text-transform:none}
+.hero .tag{font-family:var(--disp);font-size:clamp(26px,5vw,40px);line-height:1.1;margin-top:18px;text-transform:var(--disp-tt);letter-spacing:var(--disp-ls)}
+.hero .tag em{color:var(--main);font-style:italic}
+[data-theme="c"] .hero .tag em{font-style:normal}
+.roles{margin-top:16px;font:500 13px/1.9 var(--lab);letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+[data-theme="b"] .roles{font-size:20px;text-transform:none;letter-spacing:0}
+.styles{margin-top:22px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
+.styles button{width:30px;height:30px;border-radius:50%;border:3px solid var(--bg);outline:2px solid var(--line);cursor:pointer;padding:0;transition:transform .2s}
+.styles button:hover{transform:scale(1.15)}
+.styles button[aria-pressed="true"]{outline-color:var(--ink)}
+.styles b{font-weight:500;min-width:8em}
+.who{position:relative;justify-self:center;width:min(92vw,480px);margin-top:10px;perspective:1000px;z-index:2}
+.who .fig{position:relative;aspect-ratio:4/5;transform-style:preserve-3d;transform-origin:50% 100%;transition:transform .3s ease-out}
+.who .fig::before{content:"";position:absolute;left:8%;right:8%;bottom:-14px;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.28),rgba(0,0,0,0));transform:translateX(var(--sx,0px))}
+.who img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom;transition:opacity .5s;transform-origin:50% 100%;animation:breathe 4.5s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(0,0,0,.18))}
+@keyframes breathe{50%{transform:scale(1.012,1.018)}}
+.who img.p2{opacity:0}
+.who.alt2 img.p1{opacity:0}.who.alt2 img.p2{opacity:1}
+.explore{position:absolute;left:52%;top:85%;transform:translate(-50%,-50%) translateZ(40px);background:var(--main);color:var(--main-ink);text-decoration:none;font:700 12px/1 var(--lab);letter-spacing:.16em;text-transform:uppercase;padding:13px 20px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.25);animation:pulse 2.4s ease-in-out infinite}
+.who.alt2 .explore{left:50%;top:94%}
+@keyframes pulse{50%{box-shadow:0 8px 18px rgba(0,0,0,.25),0 0 0 10px rgba(185,75,67,0)}0%,100%{box-shadow:0 8px 18px rgba(0,0,0,.25),0 0 0 0 color-mix(in srgb,var(--main) 45%,transparent)}}
+.bubble{position:absolute;right:2%;top:10%;z-index:4;background:var(--ink);color:var(--bg);font-size:14px;font-weight:500;padding:10px 14px;border-radius:16px 16px 16px 2px;max-width:11em;transform:translateZ(60px)}
+.pose{position:absolute;left:4%;top:46%;z-index:4;background:var(--card);color:var(--ink);border:1.5px solid var(--ink);border-radius:99px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;transform:translateZ(50px)}
+.pose:hover{background:var(--ink);color:var(--bg)}
+.bigword{position:absolute;right:-2%;bottom:6%;font:var(--disp-w) clamp(90px,22vw,300px)/.8 var(--disp);text-transform:var(--disp-tt);color:var(--soft);z-index:0;pointer-events:none;white-space:nowrap;letter-spacing:var(--disp-ls)}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1fr 480px;align-items:end;min-height:calc(100vh - 110px)}.hero .txt{padding-bottom:70px}.who{margin-top:0}}
+.ticker{background:var(--dark);color:var(--dark-ink);overflow:hidden;white-space:nowrap;padding:14px 0;font:var(--disp-w) 24px/1 var(--disp);text-transform:var(--disp-tt);position:relative;z-index:5}
+.ticker div{display:inline-block;animation:tk 26s linear infinite}
+.ticker i{font-style:normal;color:var(--third);margin:0 22px}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* about */
+.about{display:grid;gap:40px}
+.about p{font-size:17px;max-width:30em}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:28px;border-top:1.5px solid var(--ink)}
+.num{padding:16px 10px 16px 0;border-bottom:1px solid var(--line)}
+.num b{display:block;font:var(--disp-w) 48px/1 var(--disp);color:var(--main)}
+.num span{font-size:13px;color:var(--mute)}
+.deck{position:relative;width:min(76vw,300px);aspect-ratio:4/5;margin:10px auto 26px}
+.pol{position:absolute;inset:0;background:#fff;padding:10px 10px 46px;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);cursor:pointer;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s;color:#252725}
+.pol img{width:100%;height:100%;object-fit:cover}
+.pol span{position:absolute;left:0;right:0;bottom:10px;text-align:center;font:500 20px/1 "Caveat","Noto Sans TC",cursive}
+.pol:nth-last-child(1){transform:rotate(-2deg)}
+.pol:nth-last-child(2){transform:rotate(4deg) translate(10px,6px)}
+.pol:nth-last-child(3){transform:rotate(-6deg) translate(-12px,10px)}
+.pol:nth-last-child(n+4){transform:rotate(2deg) translate(4px,14px)}
+.pol.out{transform:translateX(115%) rotate(18deg)!important;opacity:0}
+.tip{text-align:center;font-size:13px;color:var(--mute)}
+@media(min-width:900px){.about{grid-template-columns:1fr 340px;align-items:center}}
+
+/* 時間軸 */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filters button{border:1.5px solid var(--ink);background:none;border-radius:99px;padding:8px 16px;font-size:14px;font-weight:700;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.yr{font:var(--disp-w) 40px/1 var(--disp);margin:26px 0 12px;position:relative}
+.yr::before{content:"";position:absolute;left:-26px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--main)}
+.ev{position:relative;background:var(--card);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;border-left:4px solid var(--c,var(--main));transition:transform .2s}
+.ev:hover{transform:translateX(6px)}
+.ev::before{content:"";position:absolute;left:-24px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--ink)}
+.ev .d{font:500 12px/1 var(--lab);letter-spacing:.08em;color:var(--mute)}
+[data-theme="b"] .ev .d{font-size:18px}
+.ev .k{float:right;font-size:12px;font-weight:700;color:var(--c,var(--main))}
+.ev p{display:none;font-size:14px;color:var(--mute);margin-top:6px}
+.ev.open p,.__editing .ev p{display:block}
+.ev.hide,.yr.hide{display:none}
+.__editing .ev.hide,.__editing .yr.hide{display:block}
+.ev[data-c="act"]{--c:var(--main)}.ev[data-c="win"]{--c:#C28A1B}.ev[data-c="teach"]{--c:var(--second)}.ev[data-c="work"]{--c:#4E6FA8}.ev[data-c="amb"]{--c:#8A5AA8}
+[data-theme="d"] .ev[data-c="teach"]{--c:#8FB08A}[data-theme="c"] .ev[data-c="teach"]{--c:#2E8B57}
+
+/* 翻轉卡 */
+.grid{display:grid;gap:18px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+.flip{perspective:1200px;cursor:pointer}
+.flip .inner{display:grid;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.flip.on .inner{transform:rotateY(180deg)}
+.flip .f,.flip .bk{grid-area:1/1;backface-visibility:hidden;border-radius:var(--r);padding:24px;min-height:240px;display:flex;flex-direction:column}
+.flip .f{background:var(--card);border:1px solid var(--line)}
+.flip .bk{background:var(--dark);color:var(--dark-ink);transform:rotateY(180deg);font-size:15px}
+.flip .no{font:var(--disp-w) 56px/1 var(--disp);color:var(--main);margin-bottom:auto}
+.flip .k{font-size:13px;color:var(--mute);margin-top:20px}
+.flip .f p{font-size:14px;color:var(--mute)}
+.flip .turn{margin-top:14px;font-size:13px;color:var(--main);font-weight:700}
+.flip .bk ul{padding-left:1.2em;margin:10px 0 auto}
+.flip .bk a{color:inherit;margin-top:12px}
+.flip .bk .turn{color:inherit;opacity:.7}
+.__editing .flip .inner{display:block;transform:none!important}
+.__editing .flip .bk{transform:none;margin-top:8px}
+[data-theme="b"] .flip:nth-child(odd){transform:rotate(-.6deg)}[data-theme="b"] .flip:nth-child(even){transform:rotate(.6deg)}
+
+/* 講座與教學 */
+.talk{display:grid;gap:18px}
+.talk figure{position:relative;border-radius:var(--r);overflow:hidden;background:var(--dark)}
+.talk figure img{width:100%;height:100%;object-fit:cover;min-height:240px}
+.talk figcaption{position:absolute;left:0;right:0;bottom:0;background:var(--dark);color:var(--dark-ink);padding:14px 18px;font-size:14px}
+.talk figcaption b{display:block;font-size:17px}
+.tlist{display:grid;gap:10px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;cursor:pointer}
+.tcard .d{font:500 12px/1 var(--lab);letter-spacing:.08em;color:var(--mute)}
+[data-theme="b"] .tcard .d{font-size:18px}
+.tcard p{font-size:14px;color:var(--mute);max-height:0;overflow:hidden;transition:max-height .35s}
+.tcard.open p,.__editing .tcard p{max-height:120px;margin-top:6px}
+.tcard h3::after{content:"＋";float:right;color:var(--main)}
+.tcard.open h3::after{content:"－"}
+@media(min-width:860px){.talk{grid-template-columns:1.1fr 1fr}}
+
+/* 3D 作品牆 */
+.flow{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px calc(50% - 120px) 30px;perspective:1000px;scrollbar-width:none}
+.flow::-webkit-scrollbar{display:none}
+.flow figure{flex:0 0 240px;scroll-snap-align:center;transition:transform .15s linear;cursor:zoom-in}
+.flow img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;box-shadow:0 20px 40px -18px rgba(0,0,0,.55);background:#fff;border-radius:var(--r)}
+.flow figcaption{margin-top:12px;text-align:center;font-weight:700;font-size:14px}
+.flow small{display:block;font-weight:400;color:var(--mute);font-size:12px}
+.arrows{display:flex;justify-content:center;gap:10px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);background:none;cursor:pointer;font-size:18px}
+.arrows button:hover{background:var(--ink);color:var(--bg)}
+
+/* demos */
+.demo{border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.demo .scr{aspect-ratio:4/3;background:var(--dark);display:grid;place-items:center}
+.demo iframe{width:100%;height:100%;border:0;background:#fff}
+.demo .go{background:var(--main);color:var(--main-ink);border:0;border-radius:99px;padding:13px 24px;font-weight:700;cursor:pointer;transition:transform .2s}
+.demo .go:hover{transform:scale(1.06)}
+.demo .info{padding:18px 20px}
+.demo .info p{font-size:14px;color:var(--mute)}
+.demo .info a{font-size:14px;color:var(--main)}
+
+/* 履歷 */
+.cv{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cv-head{display:flex;gap:16px;align-items:center;padding:22px;border-bottom:1px solid var(--line)}
+.cv-head img{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:50% 12%;background:var(--soft)}
+.cv-head h3{font:var(--disp-w) 34px/1 var(--disp)}
+.cv-head p{font-size:14px;color:var(--mute)}
+.tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);scrollbar-width:none}
+.tabs button{flex:1 0 auto;background:none;border:0;border-bottom:3px solid transparent;padding:14px 18px;font-weight:700;cursor:pointer;color:var(--mute)}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--main)}
+.pane{display:none;padding:10px 22px 22px}
+.pane.on,.__editing .pane{display:block}
+.row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row:last-child{border:0}
+.row .d{font:500 12px/1.9 var(--lab);letter-spacing:.06em;color:var(--mute)}
+[data-theme="b"] .row .d{font-size:17px;line-height:1.3}
+.row small{display:block;color:var(--mute);font-size:13px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px}
+.skills span{border:1.5px solid var(--ink);border-radius:99px;padding:6px 14px;font-size:14px;font-weight:500}
+
+/* contact */
+.contact{background:var(--dark);color:var(--dark-ink);padding:90px 0 40px;transition:background .4s}
+.contact h2{font-size:clamp(54px,13vw,130px)}
+.contact h2 em{color:var(--third)}
+.lk{display:inline-flex;align-items:center;gap:14px;margin-top:30px;padding:14px 20px;border:1.5px solid currentColor;border-radius:var(--r);text-decoration:none;transition:transform .2s}
+.lk:hover{transform:translateY(-3px)}
+.lk i{font:800 15px "Inter Tight",sans-serif;font-style:normal;width:38px;height:38px;border-radius:50%;background:var(--dark-ink);color:var(--dark);display:grid;place-items:center}
+.lk span{display:block;font-size:13px;opacity:.7}
+footer{margin-top:56px;font-size:13px;opacity:.6}
+
+dialog{border:0;padding:0;background:none;max-width:min(94vw,820px);max-height:94vh}
+dialog::backdrop{background:#101214}
+dialog img{max-height:90vh;border-radius:4px}
+
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.js .rv.in,.__editing .rv{opacity:1;transform:none}
+.__editing .deck{aspect-ratio:auto;width:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.__editing .pol{position:relative;transform:none!important;aspect-ratio:4/5}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}.ticker div,.explore,.who img{animation:none}html{scroll-behavior:auto}}
+
+html:not(.can-edit) #__edit-toolbar{display:none!important}
+#__edit-toolbar{top:auto!important;bottom:14px;right:14px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 28px)}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="主選單">
+  <a href="#story" data-say="看我一路做了什麼">經歷</a><a href="#events" data-say="我辦過的活動在這">活動</a><a href="#design" data-say="我的設計作品">設計</a><a class="opt" href="#build" data-say="可以直接玩的作品">互動</a><a href="#cv" data-say="一頁看完我的履歷">履歷</a><a class="cta" href="#contact" data-say="來找我聊聊！">聯絡</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="bigword" aria-hidden="true">Portfolio</div>
+    <div class="txt">
+      <h1><small>李宇宥 — Portfolio 2026</small>yoyo</h1>
+      <p class="tag">Try it bold.<br><em>Make it real.</em></p>
+      <p class="roles">Events · Social Content · Design · Interactive Web</p>
+      <div class="styles" role="group" aria-label="切換風格">
+        <button type="button" data-style="a" aria-pressed="true" aria-label="Editorial" style="background:#B94B43"></button>
+        <button type="button" data-style="b" aria-pressed="false" aria-label="Summer Archive" style="background:#66765D"></button>
+        <button type="button" data-style="c" aria-pressed="false" aria-label="Blue Hour" style="background:#1F3FD1"></button>
+        <button type="button" data-style="d" aria-pressed="false" aria-label="Cinema Diary" style="background:#26292B"></button>
+        <b id="styleName">Editorial</b>
+      </div>
+    </div>
+    <div class="who" id="who">
+      <div class="fig">
+        <img class="p1" src="img/me/pose-laptop.webp" alt="yoyo 坐在筆電前">
+        <img class="p2" src="img/me/pose-book.webp" alt="yoyo 抱著筆記本">
+        <span class="bubble" id="bubble">Hi, I'm yoyo.</span>
+        <button class="pose" type="button">換個姿勢 ↻</button>
+        <a class="explore" href="#story">Explore Portfolio ↓</a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="ticker" aria-hidden="true"><div>Try it bold<i>✳</i>Make it real<i>✳</i>Events<i>✳</i>Social Content<i>✳</i>Design<i>✳</i>Interactive Web<i>✳</i>Try it bold<i>✳</i>Make it real<i>✳</i>Events<i>✳</i>Social Content<i>✳</i>Design<i>✳</i>Interactive Web<i>✳</i></div></div>
+
+<main>
+<section id="about"><div class="wrap about">
+  <div class="rv">
+    <span class="label">About</span>
+    <h2>Hi, I'm <em>yoyo.</em></h2>
+    <p>我喜歡把想法做出來。辦過百人活動、當過公益活動總召、寫過讓人願意停下來看的衛教貼文，也自己動手寫網頁。這裡放的，都是我真的做過的東西。</p>
+    <div class="nums">
+      <div class="num"><b>100+</b><span>人參與第一屆波力盃</span></div>
+      <div class="num"><b>10+</b><span>則主流媒體報導</span></div>
+      <div class="num"><b>30</b><span>位偏鄉學童的公益營隊</span></div>
+      <div class="num"><b>3</b><span>場百人活動主持</span></div>
+    </div>
+  </div>
+  <div class="rv">
+    <div class="deck" id="deck">
+      <div class="pol"><img loading="lazy" src="img/me/fjord.webp" alt="yoyo 在峽灣" style="object-position:50% 30%"><span>峽灣，風很大</span></div>
+      <div class="pol"><img loading="lazy" src="img/me/city.webp" alt="yoyo 在城市街口"><span>路口等紅燈</span></div>
+      <div class="pol"><img loading="lazy" src="img/me/park.webp" alt="yoyo 在公園"><span>公園的下午</span></div>
+      <div class="pol"><img loading="lazy" src="img/me/cafe.webp" alt="yoyo 在咖啡廳工作"><span>咖啡廳趕工中</span></div>
+      <div class="pol"><img loading="lazy" src="img/me/forest.webp" alt="yoyo 在森林公園" style="object-position:30% 30%"><span>夏天的森林</span></div>
+      <div class="pol"><img loading="lazy" src="img/me/sea.webp" alt="yoyo 在海邊" style="object-position:50% 30%"><span>海邊，頭髮亂飛</span></div>
+    </div>
+    <p class="tip">點照片，換下一張</p>
+  </div>
+</div></section>
+
+<section id="story" class="alt"><div class="wrap">
+  <span class="label rv">Chapter 01 — Timeline</span>
+  <h2 class="rv">一路做過的<em>事</em></h2>
+  <p class="lead rv">選一個類別，或點任一項看細節。</p>
+  <div class="filters rv" id="filters">
+    <button type="button" data-f="all" aria-pressed="true">全部</button>
+    <button type="button" data-f="act" aria-pressed="false">活動</button>
+    <button type="button" data-f="win" aria-pressed="false">競賽</button>
+    <button type="button" data-f="teach" aria-pressed="false">教學</button>
+    <button type="button" data-f="work" aria-pressed="false">實習</button>
+    <button type="button" data-f="amb" aria-pressed="false">大使</button>
+  </div>
+  <div class="tl rv" id="tl">
+    <div class="yr">2026</div>
+    <div class="ev" data-c="work"><span class="k">實習</span><span class="d">2026.08 – 2026.11</span><h3>國際體育事務人才培訓營與賽會實習</h3><p>完成國際體育事務人才培訓營（ISATC），結訓後進入賽會實習，支援國際賽事現場。</p></div>
+    <div class="ev" data-c="work"><span class="k">實習</span><span class="d">2026.06 – 現在</span><h3>外商人資部門實習</h3><p>負責員工福利審核與福祉活動。</p></div>
+    <div class="ev" data-c="amb"><span class="k">大使</span><span class="d">2026.06 – 現在</span><h3>HERO 校園大使</h3><p>臺灣公衛學生聯合會。HIV 去標籤的街頭衛教與社群貼文。</p></div>
+    <div class="ev" data-c="amb"><span class="k">大使</span><span class="d">2026.05 – 現在</span><h3>新北市文化大使</h3><p>新莊區。</p></div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2026</span><h3>第四屆統一超商暨關係企業商業競賽 全國亞軍</h3><p>主題：提升宅配／集配作業效能，提案 SmartPick Vision。</p></div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2026</span><h3>北醫大校院永續實踐競賽 銀獎</h3><p>「地球吃太飽｜輕推食代」，用行為推力減少校園剩食，並做了互動網頁。</p></div>
+    <div class="ev" data-c="act"><span class="k">活動</span><span class="d">2026.04.26</span><h3>羽你同行 偏鄉公益營隊｜主導籌辦</h3><p>與 Adecco 藝珂合作，24 位工作人員陪伴 30 位偏鄉學童。</p></div>
+    <div class="ev" data-c="teach"><span class="k">教學</span><span class="d">2026.03 – 現在</span><h3>One-Forty 移工中文教師</h3><p>為泰、越、菲籍移工上中文課。</p></div>
+    <div class="ev" data-c="act"><span class="k">活動</span><span class="d">2026.03.08</span><h3>讓愛流動 青春行動｜總召集人</h3><p>115 年青年節身障融合共育公益活動，苗栗。</p></div>
+    <div class="yr">2025</div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2025.12</span><h3>Top Marketing and Sales 國際行銷企劃競賽 殿軍</h3><p>全國大專校院賽事。</p></div>
+    <div class="ev" data-c="act"><span class="k">活動</span><span class="d">2025.11.29</span><h3>第一屆波力盃｜共同籌辦</h3><p>100+ 人參與，10+ 則主流媒體報導。</p></div>
+    <div class="ev" data-c="amb"><span class="k">大使</span><span class="d">2025.09 – 2026.06</span><h3>波力 Bonny ESG 大使</h3><p>核心團隊，負責公關。</p></div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2025</span><h3>Social Designer 2025 青年永續社會設計挑戰賽 決賽</h3><p>隊長兼公關，設計喝水紀錄 App 介面。</p></div>
+    <div class="ev" data-c="teach"><span class="k">教學</span><span class="d">2025.07 – 08</span><h3>東部偏鄉英語教學志工</h3><p>東澳、花蓮。</p></div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2025.06</span><h3>全國 SDGs 英文提案引導式寫作競賽 冠軍</h3><p>大專應英(外)組，主題是把掩埋場排放轉成乾淨能源。</p></div>
+    <div class="ev" data-c="work"><span class="k">實習</span><span class="d">2025.04 – 12</span><h3>臺北市青年局實習</h3><p>公民審議青年代表，參與 2025 國際青年日「Show 給世界看」。</p></div>
+    <div class="ev" data-c="teach"><span class="k">教學</span><span class="d">2025.03 – 2026.08</span><h3>語言交換中文語伴</h3><p>陪英、法、美、印、日、韓、泰等國學生練中文。</p></div>
+    <div class="yr">2023</div>
+    <div class="ev" data-c="win"><span class="k">競賽</span><span class="d">2023</span><h3>金車文教基金會 愛讓世界轉動兒少公益行動 佳作</h3><p>第十二屆，並上台做 SDGs 分享。</p></div>
+    <div class="yr">2022</div>
+    <div class="ev" data-c="teach"><span class="k">教學</span><span class="d">2022</span><h3>零基礎 Procreate 電繪入門工作坊</h3><p>在內湖高中帶同學從零開始學電繪，自己做教學簡報。</p></div>
+  </div>
+</div></section>
+
+<section id="events"><div class="wrap">
+  <span class="label rv">Chapter 02 — Events</span>
+  <h2 class="rv">活動<em>企劃</em></h2>
+  <p class="lead rv">點卡片翻面看細節。</p>
+  <div class="grid g2">
+    <div class="flip rv"><div class="inner">
+      <div class="f"><span class="no">01</span><span class="k">公益活動 · 總召集人</span><h3>讓愛流動 青春行動</h3><p>115 年青年節身障融合共育公益活動，2026.03.08 苗栗。</p><span class="turn">翻面 ↻</span></div>
+      <div class="bk"><h3>我做了什麼</h3><ul><li>與身障聽打協會合作，現場提供聽打服務，做到資訊無障礙</li><li>以「聆聽、體驗、對話」規劃專題講座、身障體驗與世界咖啡館</li><li>中央社訊息服務刊出活動報導</li></ul><a href="https://n.yam.com/Article/20260309416434" target="_blank" rel="noopener">看媒體報導 ↗</a></div>
+    </div></div>
+    <div class="flip rv"><div class="inner">
+      <div class="f"><span class="no">100+</span><span class="k">ESG 大使核心團隊 · 共同籌辦</span><h3>第一屆波力盃</h3><p>人參與，10+ 則主流媒體報導。</p><span class="turn">翻面 ↻</span></div>
+      <div class="bk"><h3>現場</h3><ul><li>2025.11.29 舉辦</li><li>17 位大使與 13 位志工一起執行</li><li>現場募集羽球拍、羽球與環保禮</li></ul><span class="turn">翻回去 ↻</span></div>
+    </div></div>
+    <div class="flip rv"><div class="inner">
+      <div class="f"><span class="no">30</span><span class="k">公益營隊 · 主導籌辦</span><h3>羽你同行 偏鄉公益營隊</h3><p>位偏鄉學童，2026.04.26。</p><span class="turn">翻面 ↻</span></div>
+      <div class="bk"><h3>怎麼做到的</h3><ul><li>與 Adecco 藝珂跨界合作</li><li>24 位工作人員，近 1:1 陪伴</li></ul><span class="turn">翻回去 ↻</span></div>
+    </div></div>
+    <div class="flip rv"><div class="inner">
+      <div class="f"><span class="no">04</span><span class="k">永續競賽 · 銀獎</span><h3>地球吃太飽｜輕推食代</h3><p>用行為推力（nudge）減少校園剩食，附互動網頁。</p><span class="turn">翻面 ↻</span></div>
+      <div class="bk"><h3>成果</h3><ul><li>2026 北醫大校院永續實踐競賽 議題探索組銀獎</li><li>產出：提案加上一個互動式網頁</li></ul><a href="works/nudge.html" target="_blank" rel="noopener">打開互動網頁 ↗</a></div>
+    </div></div>
+  </div>
+</div></section>
+
+<section id="talks" class="alt"><div class="wrap">
+  <span class="label rv">Chapter 03 — Talks &amp; Teaching</span>
+  <h2 class="rv">講座與<em>教學</em></h2>
+  <p class="lead rv">站上台講，也坐下來教。</p>
+  <div class="talk">
+    <figure class="rv"><img loading="lazy" src="img/talk-sdgs.webp" alt="yoyo 在台上做 SDGs 分享"><figcaption><b>SDGs 分享</b>2023｜金車文教基金會 愛讓世界轉動兒少公益行動</figcaption></figure>
+    <div class="tlist rv">
+      <div class="tcard"><span class="d">2022</span><h3>零基礎 Procreate 電繪入門工作坊</h3><p>在內湖高中帶同學從零開始學電繪，教學簡報自己做。</p></div>
+      <div class="tcard"><span class="d">2026.03 – 現在</span><h3>One-Forty 移工中文教師</h3><p>為泰、越、菲籍移工上中文課。</p></div>
+      <div class="tcard"><span class="d">2025.07 – 08</span><h3>東部偏鄉英語教學志工</h3><p>到東澳、花蓮教英文。</p></div>
+      <div class="tcard"><span class="d">2025.03 – 2026.08</span><h3>語言交換中文語伴</h3><p>陪英、法、美、印、日、韓、泰等國學生練中文。</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="design"><div class="wrap">
+  <span class="label rv">Chapter 04 — Design</span>
+  <h2 class="rv">我的<em>設計</em></h2>
+  <p class="lead rv">海報、衛教圖文與介面。左右滑，點圖放大。</p>
+</div>
+  <div class="flow rv" id="flow">
+    <figure><img src="img/bf-ca.webp" alt="護膚保養的紅綠燈法則 衛教圖文"><figcaption>早 C 晚 A 適合你嗎？<small>TMU 香妝節 衛教圖文</small></figcaption></figure>
+    <figure><img src="img/bf-mines.webp" alt="化妝台上的隱形地雷 衛教圖文"><figcaption>化妝台上的隱形地雷<small>TMU 香妝節 衛教圖文</small></figcaption></figure>
+    <figure><img src="img/beauty-fest.webp" alt="TMU Beauty Fest 講座海報"><figcaption>TMU Beauty Fest<small>香妝節講座主視覺</small></figcaption></figure>
+    <figure><img src="img/bf-schedule.webp" alt="Beauty Fest 講座時程表"><figcaption>Beauty Fest 時程<small>香妝節講座報名圖</small></figcaption></figure>
+    <figure><img src="img/show-world.webp" alt="2025 Show 給世界看活動海報"><figcaption>Show 給世界看<small>2025 國際青年日活動海報</small></figcaption></figure>
+    <figure><img src="img/ai-poster.webp" alt="VitalSentinel 成果海報"><figcaption>VitalSentinel<small>AI 智慧醫療工作坊成果海報</small></figcaption></figure>
+    <figure><img src="img/ghost-bottle.webp" alt="喝水紀錄 App 介面設計" style="object-fit:contain"><figcaption>喝水紀錄 App UI<small>Social Designer 2025</small></figcaption></figure>
+  </div>
+  <div class="arrows"><button type="button" data-dir="-1" aria-label="上一張">←</button><button type="button" data-dir="1" aria-label="下一張">→</button></div>
+</section>
+
+<section id="build" class="alt"><div class="wrap">
+  <span class="label rv">Chapter 05 — Build</span>
+  <h2 class="rv">互動<em>作品</em></h2>
+  <p class="lead rv">可以直接操作的網頁作品。</p>
+  <div class="grid g2">
+    <div class="demo rv"><div class="scr"><button class="go" type="button" data-src="works/vitalsentinel.html">▶ 啟動 Demo</button></div>
+      <div class="info"><h3>VitalSentinel 病床智慧監測</h3><p>AI 智慧醫療工作坊作品：病床監測系統的互動介面。</p><a href="works/vitalsentinel.html" target="_blank" rel="noopener">全螢幕開啟 ↗</a></div></div>
+    <div class="demo rv"><div class="scr"><button class="go" type="button" data-src="works/nudge.html">▶ 啟動 Demo</button></div>
+      <div class="info"><h3>輕推食代｜一起讓剩食少一點</h3><p>北醫永續實踐競賽銀獎提案的互動網頁。</p><a href="works/nudge.html" target="_blank" rel="noopener">全螢幕開啟 ↗</a></div></div>
+  </div>
+</div></section>
+
+<section id="cv"><div class="wrap">
+  <span class="label rv">Chapter 06 — Résumé</span>
+  <h2 class="rv">一頁<em>履歷</em></h2>
+  <p class="lead rv">點分頁切換。</p>
+  <div class="cv rv" id="cvBox">
+    <div class="cv-head"><img src="img/me/pose-book.webp" alt=""><div><h3>yoyo 李宇宥</h3><p>Events · Social Content · Design · Interactive Web｜Taipei</p></div></div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="t1" aria-selected="true">經歷</button>
+      <button type="button" role="tab" data-tab="t2" aria-selected="false">領導與大使</button>
+      <button type="button" role="tab" data-tab="t3" aria-selected="false">獲獎</button>
+      <button type="button" role="tab" data-tab="t4" aria-selected="false">技能</button>
+    </div>
+    <div class="pane on" id="t1">
+      <div class="row"><span class="d">2026.08 – 11</span><div><b>國際體育事務人才培訓營與賽會實習</b><small>培訓結訓後進入賽會實習，支援國際賽事現場</small></div></div>
+      <div class="row"><span class="d">2026.06 – 現在</span><div><b>外商人資部門實習</b><small>員工福利審核與福祉活動</small></div></div>
+      <div class="row"><span class="d">2026.03 – 現在</span><div><b>One-Forty 移工中文教師</b><small>泰、越、菲籍移工中文課</small></div></div>
+      <div class="row"><span class="d">2025.04 – 12</span><div><b>臺北市青年局實習</b><small>公民審議青年代表</small></div></div>
+    </div>
+    <div class="pane" id="t2">
+      <div class="row"><span class="d">2026.03</span><div><b>讓愛流動 青春行動 總召集人</b><small>115 年青年節身障融合共育公益活動</small></div></div>
+      <div class="row"><span class="d">2026.06 – 現在</span><div><b>HERO 校園大使</b><small>臺灣公衛學生聯合會，HIV 去標籤衛教</small></div></div>
+      <div class="row"><span class="d">2026.05 – 現在</span><div><b>新北市文化大使</b><small>新莊區</small></div></div>
+      <div class="row"><span class="d">2025.09 – 2026.06</span><div><b>波力 Bonny ESG 大使</b><small>核心團隊，共同籌辦第一屆波力盃、主導羽你同行營隊</small></div></div>
+    </div>
+    <div class="pane" id="t3">
+      <div class="row"><span class="d">2026</span><div><b>第四屆統一超商暨關係企業商業競賽 全國亞軍</b></div></div>
+      <div class="row"><span class="d">2026</span><div><b>北醫大校院永續實踐競賽 議題探索組銀獎</b></div></div>
+      <div class="row"><span class="d">2025</span><div><b>全國 SDGs 英文提案引導式寫作競賽 冠軍</b></div></div>
+      <div class="row"><span class="d">2025</span><div><b>Top Marketing and Sales 國際行銷企劃競賽 殿軍</b></div></div>
+      <div class="row"><span class="d">2025</span><div><b>Social Designer 2025 青年永續社會設計挑戰賽 決賽</b></div></div>
+      <div class="row"><span class="d">2023</span><div><b>金車文教基金會 愛讓世界轉動兒少公益行動 佳作</b></div></div>
+    </div>
+    <div class="pane" id="t4">
+      <div class="skills"><span>活動企劃與執行</span><span>公關與媒體聯繫</span><span>主持</span><span>社群文案</span><span>Canva 平面設計</span><span>Procreate 電繪</span><span>HTML / CSS / JavaScript</span><span>NVIDIA 生成式 AI 與 RAG 認證</span><span>中文教學</span><span>English</span></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2>Let's make it <em>real.</em></h2>
+  <a class="lk" href="https://www.linkedin.com/in/li-yoyo-3431bb359/" target="_blank" rel="noopener"><i>in</i><div><b>yoyo 李宇宥</b><span>linkedin.com/in/li-yoyo</span></div></a>
+  <footer>© 2026 yoyo 李宇宥</footer>
+</div></section>
+
+<dialog id="dlg"></dialog>
+
+<script>
+(function(){
+var H=document.documentElement,D=document;
+H.classList.add('js');
+var canEdit=location.protocol==='file:'||/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||/[?&]edit\b/.test(location.search);
+H.classList.toggle('can-edit',canEdit);
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var NAMES={a:'Editorial',b:'Summer Archive',c:'Blue Hour',d:'Cinema Diary'};
+function $(s){return D.querySelector(s)}
+function $$(s){return D.querySelectorAll(s)}
+function editing(){return !!$('.__editing')}
+function setStyle(k){if(!NAMES[k])return;H.dataset.theme=k;$$('.styles button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.style===k)});var n=$('#styleName');if(n)n.textContent=NAMES[k]}
+
+D.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.closest('#__edit-toolbar'))return;
+  var st=t.closest('.styles button');if(st){setStyle(st.dataset.style);return}
+  if(editing()){if(t.closest('a,button'))e.preventDefault();return}
+  if(t.closest('.pose')){$('#who').classList.toggle('alt2');return}
+  var fb=t.closest('#filters button');
+  if(fb){var f=fb.dataset.f;$$('#filters button').forEach(function(b){b.setAttribute('aria-pressed',b===fb)});
+    $$('#tl .ev').forEach(function(x){x.classList.toggle('hide',f!=='all'&&x.dataset.c!==f)});
+    $$('#tl .yr').forEach(function(y){var n=y.nextElementSibling,any=false;while(n&&!n.classList.contains('yr')){if(!n.classList.contains('hide'))any=true;n=n.nextElementSibling}y.classList.toggle('hide',!any)});return}
+  var tb=t.closest('.tabs button');
+  if(tb){$$('.tabs button').forEach(function(b){b.setAttribute('aria-selected',b===tb)});$$('.pane').forEach(function(p){p.classList.toggle('on',p.id===tb.dataset.tab)});return}
+  var ar=t.closest('.arrows button');if(ar){var fl=$('#flow');fl.scrollBy({left:ar.dataset.dir*246,behavior:reduce?'auto':'smooth'});return}
+  if(t.closest('a'))return;
+  var ev=t.closest('.ev,.tcard');if(ev){ev.classList.toggle('open');return}
+  var fp=t.closest('.flip');if(fp){fp.classList.toggle('on');return}
+  var p=t.closest('.pol');
+  if(p){var dk=p.parentNode,top=dk.lastElementChild;top.classList.add('out');setTimeout(function(){dk.insertBefore(top,dk.firstElementChild);requestAnimationFrame(function(){top.classList.remove('out')})},reduce?0:380);return}
+  var go=t.closest('.go');if(go){var fr=D.createElement('iframe');fr.src=go.dataset.src;fr.title='互動 Demo';go.replaceWith(fr);return}
+  var dlg=$('#dlg'),fig=t.closest('.flow figure');
+  if(fig&&dlg){var im=fig.querySelector('img');dlg.innerHTML='';var big=new Image();big.src=im.getAttribute('src');big.alt=im.alt;dlg.appendChild(big);dlg.showModal();return}
+  if(dlg&&dlg.open&&dlg.contains(t))dlg.close();
+});
+
+// 人像跟著滑鼠微微轉動；滑過選單時，對話框換一句話
+if(!reduce)D.addEventListener('pointermove',function(e){
+  if(editing())return;var fig=$('#who .fig');if(!fig)return;
+  var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+  move(x,y);
+},{passive:true});
+D.addEventListener('pointerover',function(e){var a=e.target.closest&&e.target.closest('.nav a');var b=$('#bubble');if(a&&b&&!editing())b.textContent=a.dataset.say});
+D.addEventListener('pointerout',function(e){var a=e.target.closest&&e.target.closest('.nav a');var b=$('#bubble');if(a&&b&&!editing())b.textContent="Hi, I'm yoyo."});
+
+function move(x,y){var fig=$('#who .fig');if(!fig)return;fig.style.transform='translateX('+x*26+'px) rotateZ('+x*5+'deg) rotateY('+x*16+'deg) rotateX('+(-y*8)+'deg)';fig.style.setProperty('--sx',(-x*30)+'px')}
+if(!reduce)addEventListener('deviceorientation',function(e){if(e.gamma==null||editing())return;move(Math.max(-.5,Math.min(.5,e.gamma/50)),Math.max(-.5,Math.min(.5,(e.beta-45)/60)))},{passive:true});
+// 3D 作品牆
+function flow(){var fl=$('#flow');if(!fl||reduce||editing())return;var c=fl.getBoundingClientRect(),mid=c.left+c.width/2;
+  fl.querySelectorAll('figure').forEach(function(g){var r=g.getBoundingClientRect(),d=Math.max(-1.6,Math.min(1.6,(r.left+r.width/2-mid)/r.width));g.style.transform='rotateY('+(-d*38)+'deg) scale('+(1-Math.min(1,Math.abs(d))*.16)+')';g.style.zIndex=10-Math.round(Math.abs(d)*3)})}
+D.addEventListener('scroll',function(e){if(e.target.id==='flow')requestAnimationFrame(flow)},true);
+addEventListener('resize',flow);
+
+// 選單目前位置
+function spy(){var y=scrollY+innerHeight*.35,cur='';$$('main section[id],#contact').forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+  $$('.nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur&&!a.classList.contains('cta'))})}
+addEventListener('scroll',function(){requestAnimationFrame(spy)},{passive:true});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08});
+function init(){$$('.rv:not(.in)').forEach(function(el){io.observe(el)});setStyle(H.dataset.theme||'a');flow();spy()}
+D.addEventListener('DOMContentLoaded',function(){init();var w=$('#__edit-content');if(w)new MutationObserver(init).observe(w,{childList:true})});
+})();
+</script>
+<!-- ============================================================
+  可視化編輯文字 Toggle — 貼在 </body> 前即可，不需其他修改
+  功能：右上角「編輯模式」開關 → 點文字直接改 → 保存(localStorage) /
+       導出新 HTML / 恢復初始
+============================================================ -->
+<style>
+#__edit-toolbar{position:fixed;top:16px;right:16px;z-index:2147483647;display:flex;gap:8px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13px}
+#__edit-toolbar button{padding:8px 14px;border:none;border-radius:20px;cursor:pointer;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.3);transition:transform .15s}
+#__edit-toolbar button:hover{transform:translateY(-1px)}
+#__edit-toggle{background:#ff6b35;color:#fff}
+#__edit-toggle.on{background:#22c55e}
+#__edit-save{background:#2563eb;color:#fff}
+#__edit-export{background:#111827;color:#fff}
+#__edit-reset{background:#6b7280;color:#fff}
+.__editing [contenteditable="true"]:hover{outline:2px dashed #ff6b35;outline-offset:2px;cursor:text}
+[contenteditable="true"]:focus{outline:2px solid #2563eb !important;outline-offset:2px}
+</style>
+<script>
+(function(){
+  var wrap = document.createElement('div');
+  wrap.id = '__edit-content';
+  while (document.body.firstChild) wrap.appendChild(document.body.firstChild);
+  document.body.appendChild(wrap);
+
+  var initialHTML = wrap.innerHTML;
+  var STORAGE_KEY = '__editable_html__' + location.pathname;
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) wrap.innerHTML = saved;
+  } catch(e) {}
+
+  var bar = document.createElement('div');
+  bar.id = '__edit-toolbar';
+  bar.innerHTML =
+    '<button id="__edit-toggle">✏️ 編輯模式</button>' +
+    '<button id="__edit-save">💾 保存</button>' +
+    '<button id="__edit-export">⬇️ 導出 HTML</button>' +
+    '<button id="__edit-reset">↺ 恢復初始</button>';
+  document.body.appendChild(bar);
+
+  var editing = false;
+  var blockTags = ['DIV','SECTION','ARTICLE','MAIN','UL','OL','TABLE','TR','TBODY','THEAD','FORM','NAV','HEADER','FOOTER'];
+
+  function isEditableTarget(el){
+    if (!el || !wrap.contains(el)) return false;
+    if (!el.textContent || !el.textContent.trim()) return false;
+    if (blockTags.indexOf(el.tagName) !== -1) {
+      var hasBlockChild = Array.prototype.some.call(el.children, function(c){
+        return blockTags.indexOf(c.tagName) !== -1;
+      });
+      if (hasBlockChild) return false;
+    }
+    return true;
+  }
+
+  document.addEventListener('click', function(e){
+    if (!editing) return;
+    if (bar.contains(e.target)) return;
+    var el = e.target;
+    while (el && el !== wrap && !isEditableTarget(el)) el = el.parentElement;
+    if (!el || el === wrap) return;
+    el.setAttribute('contenteditable', 'true');
+    el.focus();
+  }, true);
+
+  document.getElementById('__edit-toggle').onclick = function(){
+    editing = !editing;
+    this.classList.toggle('on', editing);
+    this.textContent = editing ? '✅ 編輯中' : '✏️ 編輯模式';
+    wrap.classList.toggle('__editing', editing);
+    if (!editing) {
+      Array.prototype.forEach.call(wrap.querySelectorAll('[contenteditable="true"]'), function(el){
+        el.removeAttribute('contenteditable');
+      });
+    }
+  };
+
+  document.getElementById('__edit-save').onclick = function(){
+    try {
+      localStorage.setItem(STORAGE_KEY, wrap.innerHTML);
+      alert('已保存於此瀏覽器');
+    } catch(e) { alert('保存失敗：' + e.message); }
+  };
+
+  document.getElementById('__edit-export').onclick = function(){
+    var clone = wrap.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('[contenteditable]'), function(el){
+      el.removeAttribute('contenteditable');
+    });
+    var doc = document.documentElement.cloneNode(true);
+    var body = doc.querySelector('body');
+    body.innerHTML = clone.innerHTML;
+    var html = '<!DOCTYPE html>\n' + doc.outerHTML;
+    var blob = new Blob([html], {type: 'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (document.title || 'page').replace(/[^\w\-]+/g, '_') + '_edited.html';
+    a.click();
+  };
+
+  document.getElementById('__edit-reset').onclick = function(){
+    if (!confirm('確定要恢復到初始內容嗎？此操作無法復原。')) return;
+    wrap.innerHTML = initialHTML;
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  };
+})();
+</script>
+
+</body>
+</html>
