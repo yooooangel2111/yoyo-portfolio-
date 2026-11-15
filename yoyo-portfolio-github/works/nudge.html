@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>輕推食代｜一起讓剩食少一點</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF9ED; --cream2:#FFF3D8; --white:#FFFDF8;
+  --green:#7FAF62; --green2:#4E8248; --mint:#DDEED4;
+  --yellow:#FFD66B; --orange:#F5A85B; --coral:#E98268;
+  --blue:#8EC6D8; --lav:#DCD4EF; --brown:#4D4035; --muted:#7D7266;
+  --line:#E9DCC7; --shadow:0 14px 35px rgba(102,79,46,.12);
+  --r:28px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--brown);font-family:'Noto Sans TC',sans-serif;
+  background:var(--cream);
+  background-image:radial-gradient(rgba(127,175,98,.12) 1.2px,transparent 1.2px);
+  background-size:22px 22px;
+  line-height:1.7;
+}
+button,input{font:inherit}
+a{color:inherit}
+.container{max-width:1120px;margin:auto;padding:0 24px}
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,249,237,.88);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)
+}
+.nav{
+  min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px
+}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:19px}
+.logo .sprout{font-size:25px}
+.links{display:flex;gap:20px;font-size:13px;font-weight:700}
+.links a{text-decoration:none}
+.links a:hover{color:var(--green2)}
+.progress{
+  width:135px;height:10px;background:#EFE4D0;border-radius:999px;overflow:hidden;
+}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow));border-radius:999px;transition:.35s}
+.hero{padding:66px 0 52px}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:42px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:7px;color:var(--green2);font-size:13px;font-weight:900}
+.kicker:before{content:"";width:24px;height:4px;border-radius:99px;background:var(--yellow)}
+h1,h2,h3{margin:0;font-weight:900;letter-spacing:.01em}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.12;margin:14px 0 18px}
+h1 em{font-style:normal;color:var(--green2);position:relative}
+h1 em:after{content:"";position:absolute;left:0;right:0;bottom:0;height:11px;background:var(--yellow);opacity:.55;border-radius:20px;z-index:-1}
+.lede{font-size:17px;color:var(--muted);max-width:54ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{
+  border:0;border-radius:999px;padding:13px 20px;font-weight:900;cursor:pointer;
+  transition:.2s;box-shadow:0 7px 0 rgba(78,130,72,.18)
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.primary{background:var(--green2);color:white}
+.btn.soft{background:var(--white);color:var(--brown);border:1px solid var(--line);box-shadow:none}
+.hero-art{
+  min-height:380px;position:relative;background:var(--mint);border-radius:42px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:var(--shadow)
+}
+.cloud{position:absolute;background:#fff;border-radius:99px;opacity:.7}
+.cloud.a{width:110px;height:28px;top:60px;left:42px}.cloud.b{width:90px;height:23px;bottom:70px;right:35px}
+.plate{
+  width:245px;height:245px;border-radius:50%;background:var(--white);
+  border:7px solid #E9E0D2;box-shadow:0 15px 0 rgba(78,130,72,.12);
+  display:flex;align-items:center;justify-content:center;position:relative
+}
+.food{width:130px;height:88px;background:var(--orange);border-radius:52% 48% 45% 55%;position:relative}
+.food:before{content:"";position:absolute;width:25px;height:10px;border-radius:50%;background:#fff3c6;top:21px;left:34px;box-shadow:35px 18px 0 #fff3c6}
+.face:before,.face:after{content:"";position:absolute;width:8px;height:12px;background:var(--brown);border-radius:50%;top:38px}
+.face:before{left:42px}.face:after{right:42px}
+.mouth{position:absolute;width:28px;height:14px;border-bottom:4px solid var(--brown);border-radius:50%;left:51px;top:55px}
+.leaf{position:absolute;font-size:35px}
+.leaf.one{top:28px;right:45px}.leaf.two{bottom:34px;left:45px}
+.bubble{
+  position:absolute;background:white;border:1px solid var(--line);border-radius:22px;
+  padding:10px 15px;font-weight:900;box-shadow:var(--shadow)
+}
+.bubble.top{top:28px;right:30px}.bubble.bottom{bottom:30px;left:28px}
+.section{padding:76px 0}
+.section.alt{background:rgba(255,243,216,.62)}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:clamp(28px,4vw,42px);margin:7px 0}
+.section-head p{color:var(--muted);max-width:65ch}
+.badge{
+  display:inline-flex;padding:6px 12px;border-radius:999px;background:var(--mint);
+  color:var(--green2);font-size:12px;font-weight:900
+}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.stat{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px;box-shadow:0 8px 22px rgba(102,79,46,.06);transition:.2s
+}
+.stat:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.stat .num{font-size:30px;font-weight:900;color:var(--coral)}
+.stat small{color:var(--muted);display:block}.stat strong{display:block;margin-top:7px;font-size:14px}
+.challenge{
+  margin-top:34px;background:var(--white);border:1px solid var(--line);border-radius:32px;
+  padding:30px;box-shadow:var(--shadow)
+}
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.option-row{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0 24px}
+.option{
+  min-width:44px;padding:9px 14px;border:1px solid var(--line);background:#FFF8E9;
+  border-radius:15px;cursor:pointer;font-weight:900
+}
+.option.active{background:var(--yellow);border-color:#E5B840}
+.result{
+  background:var(--brown);color:white;border-radius:26px;padding:28px;text-align:center;
+  position:relative;overflow:hidden
+}
+.result .emoji{font-size:40px}.result .big{font-size:48px;font-weight:900;color:var(--yellow);line-height:1.05}
+.result small{color:#E9DECD}
+.result .speech{margin-top:12px;color:#FFF5DF}
+.meter{height:12px;background:#675849;border-radius:99px;margin:17px 0;overflow:hidden}
+.meter i{display:block;height:100%;width:70%;background:linear-gradient(90deg,var(--yellow),var(--green));border-radius:99px;transition:.4s}
+.lab{
+  background:#506C50;color:white;border-radius:36px;padding:34px;box-shadow:var(--shadow)
+}
+.lab-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:30px;align-items:center}
+.switch{
+  display:flex;background:#3F5941;border-radius:999px;padding:5px;width:max-content;max-width:100%;
+}
+.switch button{
+  border:0;background:none;color:#DCE9D6;padding:10px 17px;border-radius:999px;font-weight:900;cursor:pointer
+}
+.switch button.active{background:var(--yellow);color:var(--brown)}
+.plate-test{height:250px;display:flex;align-items:center;justify-content:center}
+.test-plate{width:190px;height:190px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;border:6px solid #E5DBCC;transition:.4s}
+.test-food{width:120px;height:80px;border-radius:50%;background:var(--orange);transition:.4s}
+.lab-right h3{font-size:28px;margin-bottom:8px}.lab-right p{color:#E8F1E4}
+.wastebar{height:18px;background:#3F5941;border-radius:99px;overflow:hidden}.wastebar i{display:block;height:100%;background:var(--coral);width:82%;transition:.5s;border-radius:99px}
+.solutions{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.solution{perspective:1200px;min-height:290px;cursor:pointer}
+.card-inner{height:290px;position:relative;transition:.6s;transform-style:preserve-3d}
+.solution.flip .card-inner{transform:rotateY(180deg)}
+.facecard{
+  position:absolute;inset:0;backface-visibility:hidden;border-radius:30px;padding:26px;
+  border:1px solid var(--line);background:var(--white);box-shadow:var(--shadow)
+}
+.facecard.back{transform:rotateY(180deg);background:var(--green2);color:white}
+.iconbubble{width:62px;height:62px;border-radius:20px;background:var(--cream2);display:flex;align-items:center;justify-content:center;font-size:33px;margin-bottom:14px}
+.facecard p{color:var(--muted);font-size:14px}.back p{color:#EDF5E9}.back .badge{background:var(--yellow);color:var(--brown)}
+.hint{font-size:12px;font-weight:900;color:var(--green2);position:absolute;bottom:20px}
+.mission{
+  display:grid;grid-template-columns:1fr .9fr;gap:30px;align-items:center;
+  background:var(--lav);border-radius:36px;padding:34px
+}
+.tasks{display:grid;gap:12px;margin-top:20px}
+.task{
+  display:flex;align-items:center;gap:13px;padding:14px 16px;background:rgba(255,255,255,.72);
+  border-radius:18px;cursor:pointer;font-weight:900
+}
+.task.done{background:var(--mint);color:var(--green2)}
+.check{width:27px;height:27px;border-radius:50%;background:white;border:2px solid var(--green);display:flex;align-items:center;justify-content:center}
+.task.done .check{background:var(--green2);color:white}
+.level{
+  background:var(--white);border-radius:28px;padding:26px;text-align:center;box-shadow:var(--shadow)
+}
+.level .medal{font-size:72px}.level h3{font-size:24px}.level .points{font-size:42px;font-weight:900;color:var(--green2)}
+.budget{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:center
+}
+.receipt{
+  background:#fff;border-radius:18px;padding:25px 24px;box-shadow:var(--shadow);
+  position:relative
+}
+.receipt:after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:14px;background:linear-gradient(135deg,transparent 50%,#fff 50%) 0 0/16px 16px repeat-x}
+.receipt-line{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px dashed #D9CDB9;cursor:pointer}
+.receipt-line.off{opacity:.35;text-decoration:line-through}.total{font-size:20px;font-weight:900;padding-top:18px}
+.sdg{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px}
+.sdg-card{flex:1;min-width:220px;padding:25px;border-radius:28px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}
+.sdg-card .n{font-size:46px;font-weight:900;color:var(--green2)}
+.sources{font-size:13px;color:var(--muted);display:grid;gap:9px}
+.sources a{text-decoration:underline}
+footer{text-align:center;padding:55px 0;color:var(--muted);font-size:13px}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;
+  background:var(--brown);color:white;padding:13px 18px;border-radius:999px;font-weight:900;
+  z-index:100;transition:.25s;pointer-events:none
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){
+  .links{display:none}.stats{grid-template-columns:repeat(2,1fr)}
+  .hero-grid,.challenge-grid,.lab-grid,.mission,.budget{grid-template-columns:1fr}
+  .solutions{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .stats{grid-template-columns:1fr}.hero{padding-top:38px}.hero-art{min-height:320px}
+  .challenge,.lab,.mission{padding:22px}
+}
+
+.mood-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mood{border:1px solid var(--line);background:var(--white);border-radius:28px;padding:23px 14px;
+  cursor:pointer;box-shadow:0 8px 20px rgba(102,79,46,.06);transition:.2s;color:var(--brown)}
+.mood:hover,.mood.selected{transform:translateY(-6px);box-shadow:var(--shadow);background:var(--mint)}
+.mood:first-letter{font-size:32px}.mood strong{display:block;font-size:17px;margin:6px 0}.mood small{color:var(--muted)}
+.mood-result{margin-top:18px;padding:20px 24px;background:var(--cream2);border-radius:22px;font-weight:900;text-align:center}
+.plate-game{background:var(--white);border:1px solid var(--line);border-radius:36px;padding:28px;
+  display:grid;grid-template-columns:.75fr 1fr .8fr;gap:28px;align-items:center;box-shadow:var(--shadow)}
+.game-foods{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.game-foods button{width:58px;height:58px;border:0;border-radius:18px;background:var(--cream2);font-size:28px;cursor:pointer;transition:.18s}
+.game-foods button:hover{transform:scale(1.12) rotate(-4deg)}
+.game-plate{width:250px;height:250px;border-radius:50%;background:#fff;border:8px solid #E6DDCE;
+  box-shadow:inset 0 0 0 13px #F5F0E7,0 14px 0 rgba(78,130,72,.1);display:flex;align-content:center;
+  justify-content:center;flex-wrap:wrap;padding:35px;gap:7px;position:relative}
+.game-food{font-size:35px;animation:pop .22s ease}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.game-face{position:absolute;bottom:15px;left:0;right:0;text-align:center;font-size:9px;color:#8A7D70;line-height:1.1}
+.game-face span{font-size:15px}
+.game-info{font-size:16px}.game-info strong{font-size:42px;color:var(--green2)}
+.mini-meter{height:12px;background:#EEE3D2;border-radius:99px;overflow:hidden;margin:12px 0}.mini-meter i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--yellow));transition:.3s}
+.quiz-card{max-width:780px;margin:auto;background:var(--white);border-radius:32px;padding:32px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.quiz-q{font-size:23px;font-weight:900;margin-bottom:20px}
+.quiz-options{display:grid;gap:10px}.quiz-option{border:1px solid var(--line);background:#FFF9EE;padding:15px 18px;border-radius:18px;text-align:left;cursor:pointer;font-weight:700}
+.quiz-option:hover{background:var(--mint);border-color:var(--green)}
+.quiz-progress{height:8px;background:#EEE3D2;border-radius:99px;margin-top:24px;overflow:hidden}.quiz-progress i{display:block;width:33%;height:100%;background:var(--green);transition:.3s}
+.quiz-result{display:none;margin-top:20px;background:var(--mint);border-radius:20px;padding:20px;text-align:center;font-weight:900}
+.promise-card{display:grid;grid-template-columns:180px 1fr;gap:25px;align-items:center;background:var(--mint);border-radius:36px;padding:30px}
+.promise-character{font-size:120px;text-align:center;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+.promise-options{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.promise-options button{border:0;background:var(--white);padding:12px 16px;border-radius:999px;cursor:pointer;font-weight:900}
+.promise-options button:hover{background:var(--yellow)}.promise-result{margin-top:15px;font-weight:900}
+@media(max-width:900px){.mood-grid{grid-template-columns:repeat(2,1fr)}.plate-game,.promise-card{grid-template-columns:1fr}.game-plate{margin:auto}}
+@media(max-width:560px){.mood-grid{grid-template-columns:1fr 1fr}.game-plate{width:210px;height:210px}}
+
+/* ===== Cozy extension modules ===== */
+.garden-box{background:#FFFDF8;border:1px solid var(--line);border-radius:36px;padding:28px;box-shadow:var(--shadow);overflow:hidden}
+.garden-top{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.garden-title{font-size:25px;font-weight:900}.garden-sub{color:var(--muted);font-size:13px}
+.weather-pill{background:var(--cream2);padding:9px 14px;border-radius:999px;font-size:12px;font-weight:900}
+.garden-scene{height:285px;position:relative;margin-top:18px;border-radius:28px;background:linear-gradient(#DDF2EA,#FFF2C9);overflow:hidden}
+.sun{position:absolute;right:45px;top:22px;font-size:42px;animation:floaty 3s ease-in-out infinite}
+.cloud-g{position:absolute;font-size:35px;opacity:.72;animation:cloudmove 12s linear infinite}.c1{left:8%;top:32px}.c2{left:45%;top:75px;animation-delay:-5s}
+.hill{position:absolute;bottom:55px;border-radius:50% 50% 0 0}.h1{width:70%;height:110px;left:-10%;background:#B9D9A8}.h2{width:72%;height:100px;right:-10%;background:#A8CE98}
+.ground{position:absolute;bottom:0;left:0;right:0;height:70px;background:#77A85F}
+.garden-plant{position:absolute;bottom:49px;font-size:38px;transition:.4s;filter:drop-shadow(0 5px 3px rgba(0,0,0,.1))}
+.p1{left:12%}.p2{left:29%}.p3{left:47%}.p4{left:63%}.p5{left:78%}.p6{left:88%}
+.garden-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.garden-action{border:1px solid var(--line);background:var(--cream2);border-radius:999px;padding:10px 15px;font-weight:900;cursor:pointer}.garden-action:hover{transform:translateY(-2px)}
+.garden-message{margin-top:16px;padding:13px 17px;border-radius:18px;background:var(--mint);color:var(--green2);font-weight:900;text-align:center}
+.mood-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.mood-card{border:1px solid var(--line);background:var(--white);border-radius:28px;padding:23px;cursor:pointer;text-align:left;box-shadow:0 8px 22px rgba(102,79,46,.06);transition:.2s}.mood-card:hover,.mood-card.selected{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#B7D39F}.mood-card span{font-size:42px;display:block}.mood-card strong{display:block;font-size:17px;margin-top:8px}.mood-card small{color:var(--muted)}.message-card{margin-top:18px;padding:20px;border-radius:23px;background:#FFF1CF;text-align:center;font-weight:900;color:#6E5A36;min-height:64px;display:flex;align-items:center;justify-content:center}
+.quiz-card{background:var(--white);border:1px solid var(--line);border-radius:32px;padding:30px;box-shadow:var(--shadow);max-width:800px;margin:auto}.quiz-progress{height:10px;background:#EEE3D1;border-radius:99px;overflow:hidden;margin-bottom:25px}.quiz-progress i{display:block;width:33%;height:100%;background:linear-gradient(90deg,var(--green),var(--yellow));transition:.3s}.quiz-q{font-size:25px;font-weight:900}.quiz-options{display:grid;gap:11px;margin-top:20px}.quiz-option{border:1px solid var(--line);background:#FFF8E9;border-radius:18px;padding:14px 16px;text-align:left;cursor:pointer;font-weight:800}.quiz-option:hover{background:var(--mint)}.quiz-result{text-align:center;padding:12px}.quiz-result .big-role{font-size:75px}.quiz-result h3{font-size:28px;color:var(--green2)}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.story-card{border:1px solid var(--line);background:var(--white);border-radius:30px;padding:27px;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:.2s}.story-card:hover{transform:translateY(-5px)}.story-emoji{font-size:55px}.story-card p{color:var(--muted)}.story-result{margin-top:18px;border-radius:25px;background:var(--lav);padding:22px;font-weight:900;text-align:center;min-height:72px;display:flex;align-items:center;justify-content:center}
+.wall-box{background:#F8EBCF;border-radius:36px;padding:27px}.preset-notes{display:flex;gap:9px;flex-wrap:wrap}.preset-notes button{border:0;background:#fff;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800}.note-form{display:flex;gap:10px;margin-top:16px}.note-form input{flex:1;border:1px solid var(--line);border-radius:17px;padding:13px 15px;background:#FFFDF8;outline:none}.note-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.note{min-height:100px;padding:20px;border-radius:12px 12px 22px 12px;box-shadow:0 7px 14px rgba(91,69,38,.1);font-weight:900;transform:rotate(-1deg)}.note:nth-child(even){transform:rotate(1.2deg)}.note span{display:block;font-size:25px;margin-top:8px}.note.pink{background:#FFE0DF}.note.green{background:#E2F0D9}.note.yellow{background:#FFF0AE}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes cloudmove{0%{transform:translateX(0)}50%{transform:translateX(35px)}100%{transform:translateX(0)}}
+@media(max-width:900px){.mood-grid{grid-template-columns:repeat(2,1fr)}.story-grid,.note-wall{grid-template-columns:1fr}.garden-top{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.mood-grid{grid-template-columns:1fr}.note-form{flex-direction:column}}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="container nav">
+    <a class="logo" href="#top"><span class="sprout">🌱</span>輕推食代</a>
+    <div class="links">
+      <a href="#problem">發現問題</a><a href="#challenge">我的挑戰</a><a href="#daily">小日記</a><a href="#mini">小遊戲</a><a href="#quiz">測驗</a><a href="#lab">推力實驗</a>
+      <a href="#solutions">三種超能力</a><a href="#mission">任務</a><a href="#budget">預算</a>
+    </div>
+    <div class="progress" title="惜食任務進度"><i id="progress"></i></div>
+  </div>
+</nav>
+
+<main id="top">
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker">TMU 校園永續提案 · SDG 11 × 12</span>
+      <h1>剩食，<em>輕輕推一把</em><br>就會少一點。</h1>
+      <p class="lede">我們不要求大家變得更有意志力，而是把「小盤、差價、順手的蔬食選項」放進日常，讓好選擇自然發生。</p>
+      <div class="hero-actions">
+        <button class="btn primary" onclick="go('#challenge')">🍙 開始惜食挑戰</button>
+        <button class="btn soft" onclick="go('#lab')">🧪 我想玩推力實驗</button>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="cloud a"></div><div class="cloud b"></div>
+      <div class="leaf one">🌿</div><div class="leaf two">🍃</div>
+      <div class="bubble top">今天也少剩一口 ♡</div>
+      <div class="bubble bottom">一起來試試！</div>
+      <div class="plate"><div class="food face"><div class="mouth"></div></div></div>
+    </div>
+  </div>
+</header>
+
+<section id="problem" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">👀 先看見問題</span>
+      <h2>原來，一點點也會累積成很多。</h2>
+      <p>從全台統計數字一路靠近生活現場：把「剩食」從遙遠的大數字，變成我們每天都看得到的一口飯、一個杯子。</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">135<span>萬公噸</span></div><small>全台年廚餘量</small><strong>每天都是一大筆食物</strong></div>
+      <div class="stat"><div class="num">112–115<span>公克</span></div><small>自助餐人均剩食量</small><strong>差不多是一碗飯</strong></div>
+      <div class="stat"><div class="num">40<span>億個</span></div><small>全台年消耗飲料杯</small><strong>很多只用一次</strong></div>
+      <div class="stat"><div class="num">5.8<span>億個</span></div><small>5元價差政策預估年減量</small><strong>價格也能成為推力</strong></div>
+      <div class="stat"><div class="num">↓3<span>成</span></div><small>換小盤後剩食降幅</small><strong>小小設計就有差</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="challenge" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🎮 任務 01</span>
+      <h2>算算看，你能少剩多少？</h2>
+      <p>選一個最接近你的用餐頻率，看看「小盤惜食」可能帶來多少改變。</p>
+    </div>
+    <div class="challenge">
+      <div class="challenge-grid">
+        <div>
+          <strong>🥢 你一週在自助餐用餐幾次？</strong>
+          <div class="option-row" id="mealOptions"></div>
+          <button class="btn soft" id="nudgeBtn" onclick="toggleNudge()">🍽️ 試試小盤惜食：OFF</button>
+          <p style="font-size:12px;color:var(--muted);margin-top:18px">概念示意：以 113.5 公克／次、18 週與 3 成減量估算，非個人化精確統計。</p>
+        </div>
+        <div class="result">
+          <div class="emoji" id="resultEmoji">😮</div>
+          <div class="big" id="calcBig">5.1 kg</div>
+          <small id="calcUnit">一學期可能產生的剩食</small>
+          <div class="meter"><i id="calcMeter"></i></div>
+          <div class="speech" id="calcSpeech">「原來一口一口加起來，真的不少！」</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lab" class="section">
+  <div class="container">
+    <div class="lab">
+      <div class="lab-grid">
+        <div class="plate-test">
+          <div class="test-plate" id="testPlate"><div class="test-food" id="testFood"></div></div>
+        </div>
+        <div class="lab-right">
+          <span class="badge">🧪 任務 02 · 推力實驗室</span>
+          <h3 style="margin-top:12px">你覺得哪個比較有效？</h3>
+          <p>同一群人、同一份午餐，只改變「選項出現的方式」。點下面切換看看。</p>
+          <div class="switch">
+            <button id="posterBtn" class="active" onclick="setMode('poster')">📣 貼海報宣導</button>
+            <button id="nudgeModeBtn" onclick="setMode('nudge')">🌱 誘因設計</button>
+          </div>
+          <div style="margin-top:22px">
+            <div style="font-size:13px;margin-bottom:8px">預估剩食量</div>
+            <div class="wastebar"><i id="wasteFill"></i></div>
+          </div>
+          <p id="labCaption" style="margin-bottom:5px"></p>
+          <strong id="mechanism" style="color:var(--yellow)"></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="solutions" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🦸 任務 03</span>
+      <h2>選你的「惜食超能力」</h2>
+      <p>點一下卡片，看看這個設計為什麼能讓好選擇變得更順手。</p>
+    </div>
+    <div class="solutions">
+      <div class="solution" onclick="flip(this)">
+        <div class="card-inner">
+          <div class="facecard"><div class="iconbubble">🍽️</div><span class="badge">改預設值</span><h3>小盤超人</h3><p>自助餐預設提供小尺寸餐盤，讓「拿多少」從一開始就變得剛剛好。</p><span class="hint">↻ 點我看推力機制</span></div>
+          <div class="facecard back"><span class="badge">為什麼有效？</span><h3 style="margin-top:12px">讓「裝滿」變小一點</h3><p>取餐時，人容易把裝滿盤子當成視覺參照。盤子變小，裝滿的量也跟著變小，不需要額外意志力。</p></div>
+        </div>
+      </div>
+      <div class="solution" onclick="flip(this)">
+        <div class="card-inner">
+          <div class="facecard"><div class="iconbubble">🥤</div><span class="badge">改價格錨點</span><h3>環保杯精靈</h3><p>呼應飲料杯 5 元價差精神，讓一次性杯與自備杯的選擇出現具體差異。</p><span class="hint">↻ 點我看推力機制</span></div>
+          <div class="facecard back"><span class="badge">為什麼有效？</span><h3 style="margin-top:12px">讓選擇「有感」</h3><p>一次性選項有了具體代價，自備杯則得到誘因。價格不用很高，只要讓人意識到正在做選擇。</p></div>
+        </div>
+      </div>
+      <div class="solution" onclick="flip(this)">
+        <div class="card-inner">
+          <div class="facecard"><div class="iconbubble">🥬</div><span class="badge">改預設選項</span><h3>蔬食小隊長</h3><p>與校園周邊店家洽談蔬食日與自備餐具優惠，把低碳選項放到更順手的位置。</p><span class="hint">↻ 點我看推力機制</span></div>
+          <div class="facecard back"><span class="badge">為什麼有效？</span><h3 style="margin-top:12px">讓好選擇就在第一排</h3><p>當低碳選項成為最方便取得的選項，多數人不必特別繞路，就能自然做出比較好的選擇。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" class="section">
+  <div class="container">
+    <div class="mission">
+      <div>
+        <span class="badge">🏆 小小惜食任務</span>
+        <h2 style="margin-top:10px">今天，幫小飯糰集滿 4 顆星！</h2>
+        <p style="color:var(--muted)">完成互動，就能累積惜食能量。不是考試，只是邀請你試著做一個小選擇。</p>
+        <div class="tasks">
+          <div class="task" data-task="1" onclick="completeTask(this)"><span class="check">✓</span> 算一次自己的剩食</div>
+          <div class="task" data-task="2" onclick="completeTask(this)"><span class="check">✓</span> 玩一次推力實驗</div>
+          <div class="task" data-task="3" onclick="completeTask(this)"><span class="check">✓</span> 選一個惜食超能力</div>
+          <div class="task" data-task="4" onclick="completeTask(this)"><span class="check">✓</span> 看看你的 SDG 目標</div>
+        </div>
+      </div>
+      <div class="level">
+        <div class="medal" id="medal">🌱</div>
+        <h3 id="levelTitle">惜食新手</h3>
+        <div class="points"><span id="points">0</span> / 4</div>
+        <p style="color:var(--muted)">惜食能量</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🌍 永續連結</span>
+      <h2>一個小選擇，也能連到 SDG。</h2>
+    </div>
+    <div class="sdg">
+      <div class="sdg-card"><div class="n">11</div><h3>永續城市與社區</h3><p>讓校園周邊餐廳、飲料店的日常生活場域更永續。</p></div>
+      <div class="sdg-card"><div class="n">12</div><h3>負責任消費與生產</h3><p>從餐盤到杯子，減少不必要的資源消耗。</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="daily" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">☀️ 今日惜食小日記</span>
+      <h2>今天的你，想成為哪一種惜食玩家？</h2>
+      <p>選一個今天最像你的狀態，小飯糰會送你一句專屬鼓勵。</p>
+    </div>
+    <div class="mood-grid">
+      <button class="mood" onclick="chooseMood(this,'🌱 綠芽型','你願意從一個小地方開始，這就很棒。')">🌱<strong>綠芽型</strong><small>想試試新方法</small></button>
+      <button class="mood" onclick="chooseMood(this,'🍚 剛剛好型','今天把份量拿得剛剛好，就是很溫柔的選擇。')">🍚<strong>剛剛好型</strong><small>不多拿一口</small></button>
+      <button class="mood" onclick="chooseMood(this,'🥤 循環型','自備杯、餐具，讓每天的選擇多一點循環。')">🥤<strong>循環型</strong><small>今天想少一次性用品</small></button>
+      <button class="mood" onclick="chooseMood(this,'🥬 蔬食型','把蔬食放進日常，不需要一次改變全部。')">🥬<strong>蔬食型</strong><small>今天想選低碳一點</small></button>
+    </div>
+    <div class="mood-result" id="moodResult">💌 選一張卡，讓小飯糰寫一張今天的鼓勵卡。</div>
+  </div>
+</section>
+
+<section id="mini" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🎯 30 秒小遊戲</span>
+      <h2>幫小飯糰裝一份「剛剛好」</h2>
+      <p>點擊食物，湊出你覺得剛剛好的餐盤。不要追求滿分，只要找到自己的份量。</p>
+    </div>
+    <div class="plate-game">
+      <div class="game-foods">
+        <button onclick="addFood('🍚')">🍚</button>
+        <button onclick="addFood('🥬')">🥬</button>
+        <button onclick="addFood('🥕')">🥕</button>
+        <button onclick="addFood('🍗')">🍗</button>
+        <button onclick="addFood('🥚')">🥚</button>
+        <button onclick="addFood('🍅')">🍅</button>
+      </div>
+      <div class="game-plate" id="gamePlate">
+        <div class="game-face">●　●<br><span>⌣</span></div>
+      </div>
+      <div class="game-info">
+        <div><strong id="foodCount">0</strong> 種食物</div>
+        <div class="mini-meter"><i id="miniMeter"></i></div>
+        <p id="gameText">先放一點點，看看你的餐盤會變成什麼樣子。</p>
+        <button class="btn soft" onclick="resetPlate()">↺ 重新開始</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">💡 惜食小測驗</span>
+      <h2>你是哪一種「輕推」高手？</h2>
+      <p>三題快速選擇，最後看看你的惜食性格。</p>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-progress"><i id="quizProgress"></i></div>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  </div>
+</section>
+
+<section id="promise" class="section alt">
+  <div class="container">
+    <div class="promise-card">
+      <div class="promise-character">🍙</div>
+      <div>
+        <span class="badge">💚 我的惜食承諾</span>
+        <h2>今天，我願意多做一件小事。</h2>
+        <div class="promise-options">
+          <button onclick="makePromise(this,'我今天會少拿一點，吃完再加。')">🍽️ 少拿一點</button>
+          <button onclick="makePromise(this,'我今天會帶自己的杯子。')">🥤 帶自己的杯子</button>
+          <button onclick="makePromise(this,'我今天會給蔬食一個機會。')">🥬 試試蔬食</button>
+        </div>
+        <div id="promiseResult" class="promise-result">選一個你今天做得到的小承諾吧 ♡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="budget" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">💰 任務 04</span>
+      <h2>如果只有 NT$10,000，你會怎麼花？</h2>
+      <p>點擊項目來開關預算，看看提案拿掉哪一項會發生什麼事。</p>
+    </div>
+    <div class="budget">
+      <div>
+        <h3>把預算變成一個小決策。</h3>
+        <p style="color:var(--muted)">材料費、問卷禮品、影印費，三項合計 NT$10,000。你可以試著調整。</p>
+      </div>
+      <div class="receipt">
+        <strong style="display:block;text-align:center">輕推食代 · 執行預算</strong>
+        <div class="receipt-line" data-amt="6500" onclick="toggleBudget(this)"><span>材料費</span><span>NT$ 6,500</span></div>
+        <div class="receipt-line" data-amt="2000" onclick="toggleBudget(this)"><span>問卷禮品</span><span>NT$ 2,000</span></div>
+        <div class="receipt-line" data-amt="1500" onclick="toggleBudget(this)"><span>影印費</span><span>NT$ 1,500</span></div>
+        <div class="receipt-line total"><span>目前合計</span><span id="total">NT$ 10,000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-head"><span class="badge">📚 資料來源</span><h2>每個數字，都有出處。</h2></div>
+    <div class="sources">
+      <div>1. <a href="https://tw.news.yahoo.com/%E5%85%A8%E7%90%83%EF%BC%91%EF%BC%93%E5%84%84%E5%99%B8%E7%B3%A7%E9%A3%9F%E9%81%AD%E6%A3%84-%E5%8E%BB%E5%B9%B4%E5%85%A8%E5%8F%B0%E5%BB%9A%E9%A4%98%E9%87%8F%E9%81%94135%E5%99%B8-031014148.html" target="_blank">全台廚餘總量統計</a>｜Yahoo新聞，引環境部環境管理署</div>
+      <div>2. <a href="https://esg.gvm.com.tw/article/105932" target="_blank">自助餐剩食與換小盤研究</a>｜ESG遠見，引工研院研究</div>
+      <div>3. <a href="https://e-info.org.tw/node/234445" target="_blank">飲料杯消耗量與價差政策</a>｜環境資訊中心</div>
+      <div>4. <a href="https://www.greenpeace.org/taiwan/update/18386/" target="_blank">食物碳排放脈絡</a>｜綠色和平台灣，引 Our World in Data</div>
+      <div>5. <a href="https://sdgs.tmu.edu.tw/news-23.html" target="_blank">北醫永續發展週｜減塑食尚，循環綠活</a>｜臺北醫學大學永續發展處</div>
+      <div>6. <a href="https://sdgs.un.org/goals/goal11" target="_blank">SDG 11</a> ／ <a href="https://sdgs.un.org/goals/goal12" target="_blank">SDG 12</a>｜United Nations DESA</div>
+      <div style="margin-top:8px;padding:14px;border-radius:16px;background:#FFF1CF;color:#6E5A36">⚠️ 正式對外發布或送件前，建議再次至原始資料來源核對數字。</div>
+    </div>
+  </div>
+</section>
+
+
+<section id="garden" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🌷 溫馨延伸</span>
+      <h2>把校園變成一座「惜食小花園」</h2>
+      <p>每完成一個小行動，就種下一朵花。今天想先種什麼？</p>
+    </div>
+    <div class="garden-box">
+      <div class="garden-top">
+        <div>
+          <div class="garden-title">🌱 我的惜食花園</div>
+          <div class="garden-sub">完成任務，花園會慢慢長大。</div>
+        </div>
+        <div class="weather-pill" id="gardenMood">☀️ 今天適合種下好習慣</div>
+      </div>
+      <div class="garden-scene" id="gardenScene">
+        <div class="sun">☀️</div>
+        <div class="cloud-g c1">☁️</div><div class="cloud-g c2">☁️</div>
+        <div class="hill h1"></div><div class="hill h2"></div>
+        <div class="ground"></div>
+        <div class="garden-plant p1">🌱</div>
+        <div class="garden-plant p2">🌱</div>
+        <div class="garden-plant p3">🌱</div>
+        <div class="garden-plant p4">🌱</div>
+        <div class="garden-plant p5">🌱</div>
+        <div class="garden-plant p6">🌱</div>
+      </div>
+      <div class="garden-actions">
+        <button class="garden-action" onclick="plantFlower('🌼')">🌼 種一朵小花</button>
+        <button class="garden-action" onclick="plantFlower('🌷')">🌷 種一朵鬱金香</button>
+        <button class="garden-action" onclick="plantFlower('🌻')">🌻 種一朵向日葵</button>
+      </div>
+      <div class="garden-message" id="gardenMessage">「今天少拿一口，也值得被記住。」</div>
+    </div>
+  </div>
+</section>
+
+<section id="mood" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">💌 溫柔互動</span>
+      <h2>今天的你，想對食物說什麼？</h2>
+      <p>選一張小卡，把你的惜食心情留在網站裡。</p>
+    </div>
+    <div class="mood-grid">
+      <button class="mood-card" onclick="chooseMood(this,'🌱 謝謝你，今天我會剛剛好。')"><span>🌱</span><strong>剛剛好</strong><small>我想少拿一點</small></button>
+      <button class="mood-card" onclick="chooseMood(this,'🥣 吃得完，就是對食物最溫柔的回應。')"><span>🥣</span><strong>吃光光</strong><small>今天不留最後一口</small></button>
+      <button class="mood-card" onclick="chooseMood(this,'🥤 帶著自己的杯子出門，明天也一起。')"><span>🥤</span><strong>帶自己的杯</strong><small>讓一次性少一個</small></button>
+      <button class="mood-card" onclick="chooseMood(this,'🥬 今天試試看，把蔬食放到第一選擇。')"><span>🥬</span><strong>選蔬食</strong><small>讓低碳更順手</small></button>
+    </div>
+    <div class="message-card" id="moodMessage">💛 選一張你的今日惜食小卡吧。</div>
+  </div>
+</section>
+
+<section id="quiz" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">🎀 小測驗</span>
+      <h2>你是哪一型「惜食玩家」？</h2>
+      <p>不用想太久，憑直覺選。完成 3 題，就會解鎖你的專屬角色。</p>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-progress"><i id="quizProgress"></i></div>
+      <div id="quizBody"></div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="section alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">📖 小小故事</span>
+      <h2>一份午餐的「三種結局」</h2>
+      <p>點選角色，看看同一份午餐在不同選擇下會發生什麼。</p>
+    </div>
+    <div class="story-grid">
+      <button class="story-card" onclick="showStory('small')">
+        <div class="story-emoji">🍽️</div><h3>小盤結局</h3><p>「先拿少一點，不夠再添。」</p>
+      </button>
+      <button class="story-card" onclick="showStory('normal')">
+        <div class="story-emoji">🍛</div><h3>照舊結局</h3><p>「看起來好多，先拿再說。」</p>
+      </button>
+      <button class="story-card" onclick="showStory('veg')">
+        <div class="story-emoji">🥬</div><h3>蔬食結局</h3><p>「今天，換一個溫柔的選擇。」</p>
+      </button>
+    </div>
+    <div class="story-result" id="storyResult">✨ 點一個結局，故事就會開始。</div>
+  </div>
+</section>
+
+<section id="wall" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="badge">💚 校園留言牆</span>
+      <h2>留一句話，給下一個來吃飯的人。</h2>
+      <p>這是一面小小的匿名惜食留言牆。選一個句子，也可以自己寫。</p>
+    </div>
+    <div class="wall-box">
+      <div class="preset-notes">
+        <button onclick="addNote('今天也剛剛好 🌱')">今天也剛剛好 🌱</button>
+        <button onclick="addNote('吃多少，拿多少 🍚')">吃多少，拿多少 🍚</button>
+        <button onclick="addNote('下一餐，再一起少一點 💚')">下一餐，再一起少一點 💚</button>
+      </div>
+      <div class="note-form">
+        <input id="noteInput" maxlength="32" placeholder="寫一句給下一位同學的話……">
+        <button class="btn primary" onclick="addCustomNote()">貼上牆 💌</button>
+      </div>
+      <div class="note-wall" id="noteWall">
+        <div class="note pink">今天吃光光！<span>🍙</span></div>
+        <div class="note green">小盤也很可愛呀 🌱<span>🥢</span></div>
+        <div class="note yellow">帶自己的杯子出門！<span>🥤</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="justify-content:center"><span class="sprout">🌱</span>輕推食代</div>
+  <p>臺北醫學大學校園永續提案 · SDG 11 · SDG 12</p>
+</footer>
+</main>
+<div class="toast" id="toast">🌱 惜食能量 +1！</div>
+
+<script>
+const state={meals:5,nudge:false,mode:'poster',tasks:new Set(),budget:10000};
+function go(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth'});}
+function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1400);}
+const mealBox=document.getElementById('mealOptions');
+for(let i=1;i<=7;i++){const b=document.createElement('button');b.className='option'+(i===5?' active':'');b.textContent=i;b.onclick=()=>{state.meals=i;document.querySelectorAll('.option').forEach(x=>x.classList.remove('active'));b.classList.add('active');updateCalc();completeById(1)};mealBox.appendChild(b)}
+function toggleNudge(){state.nudge=!state.nudge;const b=document.getElementById('nudgeBtn');b.textContent=state.nudge?'🍽️ 小盤惜食：ON！':'🍽️ 試試小盤惜食：OFF';updateCalc();completeById(1)}
+function updateCalc(){
+  const base=state.meals*18*113.5, shown=state.nudge?base*.3:base;
+  document.getElementById('calcBig').textContent=(shown/1000).toFixed(1)+' kg';
+  document.getElementById('calcUnit').textContent=state.nudge?'導入小盤後：少剩的量':'未導入設計：可能產生的剩食';
+  document.getElementById('calcMeter').style.width=Math.min(100,base/8000*100)+'%';
+  document.getElementById('resultEmoji').textContent=state.nudge?'🥳':'😮';
+  document.getElementById('calcSpeech').textContent=state.nudge?'「小小改變，真的可以少很多！」':'「原來一口一口加起來，真的不少！」';
+}
+function setMode(mode){
+  state.mode=mode;
+  const n=mode==='nudge';
+  document.getElementById('posterBtn').classList.toggle('active',!n);
+  document.getElementById('nudgeModeBtn').classList.toggle('active',n);
+  document.getElementById('testFood').style.width=n?'82px':'120px';
+  document.getElementById('testFood').style.height=n?'56px':'80px';
+  document.getElementById('wasteFill').style.width=n?'32%':'82%';
+  document.getElementById('wasteFill').style.background=n?'var(--green)':'var(--coral)';
+  document.getElementById('labCaption').textContent=n?'換小一號餐盤、標差價、放蔬食選項——不用多想，順手就做出比較好的選擇。':'貼海報、辦講座、發傳單——大家知道該珍惜，但拿餐的那一刻，習慣可能還是照舊。';
+  document.getElementById('mechanism').textContent=n?'推力機制：改變預設值與價格錨點，讓效果自動發生':'推力機制：依賴意志力，效果較難持續';
+  completeById(2);
+}
+function flip(el){el.classList.toggle('flip');completeById(3)}
+function completeTask(el){const id=Number(el.dataset.task);completeById(id)}
+function completeById(id){
+  if(state.tasks.has(id))return;
+  state.tasks.add(id);
+  const el=document.querySelector('.task[data-task="'+id+'"]');
+  if(el){el.classList.add('done')}
+  document.getElementById('points').textContent=state.tasks.size;
+  document.getElementById('progress').style.width=(state.tasks.size/4*100)+'%';
+  if(state.tasks.size===4){document.getElementById('medal').textContent='🏆';document.getElementById('levelTitle').textContent='惜食小隊長';showToast('🏆 任務完成！你成為惜食小隊長！')}
+  else showToast('🌱 惜食能量 +1！');
+}
+function toggleBudget(el){
+  el.classList.toggle('off');
+  let total=0;document.querySelectorAll('.receipt-line[data-amt]').forEach(x=>{if(!x.classList.contains('off'))total+=Number(x.dataset.amt)});
+  document.getElementById('total').textContent='NT$ '+total.toLocaleString();
+}
+updateCalc();
+setMode('poster');
+
+function chooseMood(el,title,msg){
+  document.querySelectorAll('.mood').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('moodResult').textContent='💌 '+title+'｜'+msg;
+  completeById(4);
+}
+let plateFoods=[];
+function addFood(food){
+  if(plateFoods.length>=10){showToast('🍙 餐盤快滿了！剛剛好就好');return}
+  plateFoods.push(food);
+  renderPlate();
+}
+function renderPlate(){
+  const plate=document.getElementById('gamePlate');
+  plate.querySelectorAll('.game-food').forEach(x=>x.remove());
+  plateFoods.forEach(f=>{const s=document.createElement('span');s.className='game-food';s.textContent=f;plate.appendChild(s)});
+  document.getElementById('foodCount').textContent=plateFoods.length;
+  document.getElementById('miniMeter').style.width=(plateFoods.length*10)+'%';
+  document.getElementById('gameText').textContent=plateFoods.length===0?'先放一點點，看看你的餐盤會變成什麼樣子。':
+    plateFoods.length<=5?'看起來剛剛好！吃完再加，也是一種惜食。':'餐盤快滿了～如果吃不完，可以先少拿一點 ♡';
+  if(plateFoods.length>=3)completeById(1);
+}
+function resetPlate(){plateFoods=[];renderPlate()}
+const quiz=[
+ {q:'看到自助餐時，你通常會？',a:[['先拿滿再說','A'],['先拿少一點，不夠再加','B'],['看今天最想吃什麼再決定','C']]},
+ {q:'如果自備杯少 5 元，你會？',a:[['有優惠就試試','C'],['一定帶自己的杯子','B'],['偶爾想得到才帶','A']]},
+ {q:'如果蔬食被放在最順手的位置，你會？',a:[['今天就試一次','B'],['看起來好吃就拿','C'],['還是選原本的','A']]}
+];
+let qi=0,quizScore={A:0,B:0,C:0};
+function renderQuiz(){
+  if(qi>=quiz.length){
+    const best=Object.keys(quizScore).sort((a,b)=>quizScore[b]-quizScore[a])[0];
+    const names={A:'🌼 溫柔觀察家',B:'🌱 輕推行動派',C:'🍙 剛剛好玩家'};
+    document.getElementById('quizQ').textContent='🎉 測驗完成！';
+    document.getElementById('quizOptions').innerHTML='';
+    document.getElementById('quizProgress').style.width='100%';
+    const r=document.getElementById('quizResult');r.style.display='block';
+    r.innerHTML='你的惜食角色是 <strong>'+names[best]+'</strong><br><small>適合你的方式：從一個很小、很順手的改變開始。</small>';
+    completeById(3);return;
+  }
+  document.getElementById('quizQ').textContent='Q'+(qi+1)+'｜'+quiz[qi].q;
+  const box=document.getElementById('quizOptions');box.innerHTML='';
+  quiz[qi].a.forEach(([txt,key])=>{const b=document.createElement('button');b.className='quiz-option';b.textContent=txt;b.onclick=()=>{quizScore[key]++;qi++;document.getElementById('quizProgress').style.width=(qi/quiz.length*100)+'%';renderQuiz()};box.appendChild(b)});
+}
+renderQuiz();
+function makePromise(el,text){
+  document.querySelectorAll('.promise-options button').forEach(x=>x.style.background='var(--white)');
+  el.style.background='var(--yellow)';
+  document.getElementById('promiseResult').textContent='💚 今天的你：「'+text+'」';
+  showToast('💚 承諾收下了！');
+  completeById(4);
+}
+
+/* ===== Cozy extension interactions ===== */
+let flowerCount=0;
+function plantFlower(type){
+  const slots=['p1','p2','p3','p4','p5','p6'];
+  const slot=slots[flowerCount%slots.length];
+  const el=document.querySelector('.'+slot);
+  el.textContent=type; el.style.transform='scale(1.25) translateY(-5px)';
+  setTimeout(()=>el.style.transform='scale(1)',450);
+  flowerCount++;
+  document.getElementById('gardenMessage').textContent=
+    flowerCount<3?'🌱 一朵花，代表一個小小選擇。':
+    flowerCount<6?'🌷 花園開始變得熱鬧了！你的好習慣正在長大。':
+    '🌻 小花園開滿了！每個小選擇都值得被看見。';
+  if(flowerCount===1) completeById(4);
+}
+function chooseMood(el,msg){
+  document.querySelectorAll('.mood-card').forEach(x=>x.classList.remove('selected'));
+  el.classList.add('selected'); document.getElementById('moodMessage').textContent='💌 '+msg;
+  showToast('💚 已收到你的惜食心情');
+}
+const quizData=[
+ {q:'如果今天自助餐有很多菜，你第一個會做什麼？',a:[['🍽️ 先拿少一點，不夠再添。','small'],['👀 先繞一圈，再決定。','care'],['🥬 先找蔬食與喜歡的菜。','green']]},
+ {q:'店家給你兩個杯子，你會怎麼選？',a:[['🥤 自備杯，有優惠就更好。','green'],['✨ 看哪一個比較方便。','care'],['🫶 今天剛好忘了帶，下次記得。','small']]},
+ {q:'看到餐盤剩下一點，你會？',a:[['🥣 下次少拿一點。','small'],['🌱 把今天的經驗記住。','care'],['🥬 想想有沒有更喜歡的選擇。','green']]}
+];
+let qi=0, qscore={small:0,care:0,green:0};
+function renderQuiz(){
+  const body=document.getElementById('quizBody'), bar=document.getElementById('quizProgress');
+  bar.style.width=((qi)/quizData.length*100)+'%';
+  if(qi>=quizData.length){
+    const type=Object.keys(qscore).sort((a,b)=>qscore[b]-qscore[a])[0];
+    const map={small:['🍽️','剛剛好小盤家','你很會注意份量，適合從「少拿一點、需要再添」開始。'],care:['🌱','溫柔觀察家','你會先觀察情境，適合用小提醒與友善設計慢慢改變習慣。'],green:['🥬','綠色行動派','你願意先做低碳選擇，適合挑戰蔬食日與自備杯。']};
+    body.innerHTML='<div class="quiz-result"><div class="big-role">'+map[type][0]+'</div><span class="badge">你的惜食角色</span><h3>'+map[type][1]+'</h3><p style="color:var(--muted)">'+map[type][2]+'</p><button class="btn primary" onclick="qi=0;qscore={small:0,care:0,green:0};renderQuiz()">再玩一次</button></div>';
+    bar.style.width='100%'; completeById(3); return;
+  }
+  const item=quizData[qi];
+  body.innerHTML='<div class="quiz-q">'+item.q+'</div><div class="quiz-options">'+item.a.map((x,i)=>'<button class="quiz-option" onclick="answerQuiz(\''+x[1]+'\')">'+x[0]+'</button>').join('')+'</div>';
+}
+function answerQuiz(type){qscore[type]++;qi++;renderQuiz()}
+function showStory(type){
+ const text={
+ small:'🍽️ 小盤結局｜先拿少一點，需要再添。最後，盤子乾乾淨淨，小飯糰偷偷笑了一下：「原來剛剛好真的很剛好。」',
+ normal:'🍛 照舊結局｜習慣沒有錯，但一不小心就拿多了。故事提醒我們：如果環境可以幫一點忙，也許就不用每次靠意志力。',
+ veg:'🥬 蔬食結局｜今天把蔬食放到第一選擇。不是「一定要」，而是讓另一種選擇更容易被看見。'
+ };
+ document.getElementById('storyResult').textContent=text[type];completeById(4);
+}
+const noteColors=['pink','green','yellow'];
+function addNote(text){
+ const wall=document.getElementById('noteWall'), n=document.createElement('div');
+ n.className='note '+noteColors[Math.floor(Math.random()*noteColors.length)];
+ n.innerHTML=text+'<span>💚</span>';wall.prepend(n);
+ showToast('💌 已貼到惜食留言牆！');
+}
+function addCustomNote(){
+ const input=document.getElementById('noteInput'); const text=input.value.trim();
+ if(!text){showToast('✏️ 先寫一句話吧！');return}
+ addNote(text);input.value='';
+}
+renderQuiz();
+
+</script>
+</body>
+</html>
